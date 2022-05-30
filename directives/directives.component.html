@@ -1,0 +1,120 @@
+<h1 class="bg-primary text-white">STRUCTURAL DIRECTIVES</h1>
+
+<h4>*ngIf</h4>
+
+<p *ngIf="isLogin; else loginTemplate">Hello Cybersoft</p>
+
+<ng-template #loginTemplate>
+  <button class="btn btn-danger">Login</button>
+</ng-template>
+
+<br />
+<button class="btn btn-primary" (click)="isLogin = !isLogin">
+  Toggle login
+</button>
+
+<h4>*ngFor</h4>
+
+<!-- b4-table-default -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let idx = index; let even = even">
+      <!-- let idx = index -->
+      <!-- let isFirst = first -->
+      <!-- let isLast = last -->
+      <!-- let even = even -->
+      <!-- let odd = odd -->
+      <!-- let count = count -->
+      <td>{{ idx }}</td>
+      <td>
+        {{ user.name }}
+        <p *ngIf="even">EVEN</p>
+      </td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 class="bg-info text-white">ngSwitch</h4>
+
+<div *ngFor="let user of users">
+  <div [ngSwitch]="user.status">
+    <p *ngSwitchCase="status.Active" class="bg-success">Active</p>
+    <p *ngSwitchCase="status.Inactive" class="bg-danger">Inactive</p>
+    <p *ngSwitchDefault class="bg-warning">Pending</p>
+  </div>
+</div>
+
+<h4 class="bg-primary text-white">ngClass</h4>
+
+<button
+  class="p-3 border-none mx-2"
+  *ngFor="let chair of chairs"
+  [ngClass]="{
+    booked: chairStatus.Booked === chair.status,
+    booking: chairStatus.Booking === chair.status,
+    available: chairStatus.Available === chair.status
+  }"
+  [disabled]="chair.status === chairStatus.Booked"
+  (click)="changeChairStatus(chair)"
+>
+  {{ chair.name }}
+</button>
+
+<br />
+<br />
+
+<h4 class="bg-success text-white">ngStyle</h4>
+
+<div class="form-group">
+  <label for="">Background</label>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="currentStyle.background"
+  />
+</div>
+<div class="form-group">
+  <label for="">Color</label>
+  <input type="text" class="form-control" [(ngModel)]="currentStyle.color" />
+</div>
+<p [ngStyle]="currentStyle">Hello cybersoft!.</p>
+
+<br />
+<br />
+
+<h4 class="bg-danger text-white">ng-template</h4>
+
+<ng-template #welcomeTmp let-currentName="name"
+  ><p>
+    Welcome
+    <!-- <> </> tương tự react -->
+    <ng-container *ngIf="currentName">to {{ currentName }}</ng-container> .
+  </p>
+</ng-template>
+
+<ng-container
+  *ngTemplateOutlet="welcomeTmp; context: { name: 'FPT' }"
+></ng-container>
+<ng-container *ngTemplateOutlet="welcomeTmp"></ng-container>
+<ng-container *ngTemplateOutlet="welcomeTmp"></ng-container>
+
+<!-- <app><p>HELLO</p></app>  => props.children-->
+<h4 class="bg-dark text-white">ng-content</h4>
+
+<app-demo-ng-content>
+  <header>Header</header>
+  <footer class="footer">Footer</footer>
+</app-demo-ng-content>
+
+<br />
+<br />
+
+<app-baitap5></app-baitap5>

@@ -1,0 +1,33 @@
+<h1 class="bg-primary text-white">Interpolation Binding</h1>
+
+<p>{{ username }}</p>
+<p>{{ populateUsername() }}</p>
+<input type="text" value="{{ username }}" />
+
+<br />
+<br />
+
+<h1 class="bg-success text-white">Property Binding</h1>
+
+<p [innerHTML]="username"></p>
+<p [innerHTML]="populateUsername()"></p>
+<input type="text" [value]="username" />
+
+<br />
+<br />
+
+<h1 class="bg-warning text-white">Event Binding</h1>
+
+<input
+  #usernameInput
+  [value]="username"
+  type="text"
+  (keyup)="onKeyup(usernameInput)"
+/>
+<button class="btn btn-primary" (click)="changeUsername(usernameInput.value)">
+  Change username
+</button>
+
+<br />
+<br />
+<hr />

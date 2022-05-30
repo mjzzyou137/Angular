@@ -1,0 +1,106 @@
+<!-- <div class="row">
+  <div class="col-12">
+    <app-header></app-header>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-7 px-0">
+    <app-content></app-content>
+  </div>
+  <div class="col-5 px-0">
+    <app-sidebar></app-sidebar>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12"><app-footer></app-footer></div>
+</div> -->
+
+<!-- <app-home></app-home> -->
+<!-- <app-data-binding></app-data-binding>
+<hr />
+<app-directives></app-directives> -->
+
+<!-- <app-input-output></app-input-output> -->
+
+<div class="mt-5 mx-auto w-50">
+  <!-- MATERIAL BUTTON -->
+
+  <button mat-flat-button>Basic</button>
+  <button mat-flat-button disableRipple color="primary">Primary</button>
+  <button mat-flat-button color="accent">Accent</button>
+  <button mat-flat-button color="warn">Warn</button>
+  <button mat-flat-button disabled>Disabled</button>
+  <a mat-flat-button href="https://www.google.com/" target="_blank">Link</a>
+
+  <!-- MATERIAL INPUT -->
+  <form class="example-form mt-5">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <input type="number" matInput placeholder="Ex. Pizza" value="Sushi" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </form>
+
+  <!-- MATERIAL TABLE -->
+  <table mat-table [dataSource]="dataSource" class="mt-5 mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef>Weight</th>
+      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- ANTD TABLE -->
+  <nz-table #basicTable class="mt-5" [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>
+          <a>Action 一 {{ data.name }}</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a>Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
